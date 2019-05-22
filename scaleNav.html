@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #warp{
+            width: 800px;
+            height: 40px;
+            border: 1px solid;
+            margin: 100px auto;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+            display: block;
+            width: 88px;
+            height: 40px;
+            color: black;
+            text-align: center;
+            line-height: 40px;
+        }
+        .uls{
+            width: 800px;
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .uls>li{
+            width: 88px;
+            height: 40px;
+            border-right: 1px solid;
+            position: relative;
+            overflow: hidden;
+        }
+        .uls>li:last-child{
+            border-right: none;
+        }
+        .uls>li>.inner{
+            position: absolute;
+            top:40px;
+            left: 0px;
+            width: 88px;
+            height: 40px;
+            background-color: deeppink;
+            transition: top .5s linear;
+        }
+        .uls>li:hover>.inner{
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="warp">
+    <ul class="uls">
+        <li data-id="a">
+            <a href="javascript:;">我的主页</a>
+            <div class="inner"></div>
+        </li>
+        <li data-id="b">
+            <a href="javascript:;">新闻头条</a>
+            <div class="inner"></div>
+        </li>
+        <li data-id="c">
+            <a href="javascript:;">电视剧</a>
+            <div class="inner"></div>
+        </li>
+        <li data-id="d">
+            <a href="javascript:;">最新电影</a>
+            <div class="inner"></div>
+        </li>
+        <li data-id="e">
+            <a href="javascript:;">腿长1米8</a>
+            <div class="inner"></div>
+        </li>
+        <li data-id="f">
+            <a href="javascript:;">今日团购</a>
+            <div class="inner"></div>
+        </li>
+        <li data-id="g">
+            <a href="javascript:;">小说大全</a>
+            <div class="inner"></div>
+        </li>
+        <li data-id="a">
+            <a href="javascript:;">旅游度假</a>
+            <div class="inner"></div>
+        </li>
+        <li data-id="b">
+            <a href="javascript:;">次品退购</a>
+            <div class="inner"></div>
+        </li>
+    </ul>
+    <audio id="myAu"></audio>
+</div>
+<script>
+    window.onload = function () {
+        // http://s8.qhimg.com/share/audio/piano1/a4.mp3
+        var lis = document.querySelectorAll("#warp .uls li");
+        var myAu = document.getElementById("myAu");
+
+        for(var i=0; i<lis.length; i++){
+            lis[i].onmouseenter = function () {
+                var atr = this.getAttribute("data-id");
+                myAu.src = "http://s8.qhimg.com/share/audio/piano1/"+atr+"4.mp3";
+                if(myAu.src){
+                    myAu.play();
+                }
+
+            }
+        }
+    }
+</script>
+</body>
+</html>
